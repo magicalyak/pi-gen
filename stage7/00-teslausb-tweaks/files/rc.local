@@ -17,7 +17,6 @@ if [ "$_IP" ]; then
   printf "My IP address is %s\n" "$_IP"
 fi
 
-
 SETUP_LOGFILE=/boot/teslausb-headless-setup.log
 
 function setup_progress () {
@@ -30,7 +29,12 @@ function get_script () {
   local name="$2"
   local remote_path="${3:-}"
 
-  while ! curl --cacert /etc/ssl/certs/ca-certificates.crt -o "$local_path/$name" https://raw.githubusercontent.com/"$REPO"/teslausb/"$BRANCH"/"$remote_path"/"$name"
+  if [ ! -e /usr/local/share/ca-certificates/ca-certificates.crt ]
+  then
+    ln -s /etc/ssl/certs/ca-certificates.crt /usr/local/share/ca-certificates/ca-certificates.crt
+  fi
+
+  while ! curl -o "$local_path/$name" https://raw.githubusercontent.com/"$REPO"/teslausb/"$BRANCH"/"$remote_path"/"$name"
   do
     setup_progress "get_script failed, retrying"
     sleep 3
