@@ -9,6 +9,10 @@ install -m 755 files/enable_wifi.sh "${ROOTFS_DIR}/root/bin"
 install -m 755 files/powermonitor.service "${ROOTFS_DIR}/etc/systemd/system/"
 install -m 755 files/powermonitor.py "${ROOTFS_DIR}/home/pi/"
 
+on chroot << EOF
+ln -s /etc/ssl/certs/ca-certificates.crt /usr/local/share/ca-certificates/ca-certificates.crt
+EOF
+
 # Below here is the rest of the stage2 (builds the Stretch lite image)
 # run script commented out just to give guidance on things that can be done.
 
