@@ -1,10 +1,4 @@
---- stage7/rootfs/etc/profile
-+++ stage7/rootfs/etc/profile
-@@ -32,3 +32,7 @@
-   done
-   unset i
- fi
-+
-+if [ "${CURL_CA_BUNDLE-}" ]; then
-+  CURL_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt
-+fi
+--- stage7/rootfs/etc/environment
++++ stage7/rootfs/etc/environment
+@@ -1,1 +1,1 @@
++CURL_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt
