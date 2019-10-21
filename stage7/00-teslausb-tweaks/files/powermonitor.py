@@ -7,7 +7,7 @@ pj=pijuice.PiJuice(1, 0x14)
 pj.power.SetWakeUpOnCharge(0)
 pj.power.SetSystemPowerSwitch(0)
 powerloss = 0
-sleeptime = 30
+sleeptime = 900
 while True:
   time.sleep(int(sleeptime))
   sys.stdout.write(time.strftime("%Y-%m-%d %H:%M") + " Charge State: " + pj.status.GetStatus()['data']['powerInput5vIo'] + " Charge Percent: " +  str(pj.status.GetChargeLevel()['data']) + " Power Loss Count: " + str(powerloss) + "\n")
