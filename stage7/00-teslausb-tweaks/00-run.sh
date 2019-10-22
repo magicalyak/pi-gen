@@ -1,12 +1,15 @@
 #!/bin/bash -e
 touch "${ROOTFS_DIR}/boot/ssh"
+install -m 644 files/curlssl.sh     "${ROOTFS_DIR}/etc/profile.d/"
 install -m 755 files/rc.local		"${ROOTFS_DIR}/etc/"
 install -m 755 files/stage_flash    "${ROOTFS_DIR}/etc/"
 install -m 666 files/teslausb_setup_variables.conf.sample    "${ROOTFS_DIR}/boot/"
 install -m 666 files/wpa_supplicant.conf.sample    "${ROOTFS_DIR}/boot/"
 install -d "${ROOTFS_DIR}/root/bin"
 install -m 755 files/enable_wifi.sh "${ROOTFS_DIR}/root/bin"
+install -m 755 files/setup-teslausb "${ROOTFS_DIR}/root/bin"
 
+# Works for initial CURL run
 on_chroot << EOF
 ln -s /etc/ssl/certs/ca-certificates.crt /usr/local/share/ca-certificates/ca-certificates.crt
 EOF
