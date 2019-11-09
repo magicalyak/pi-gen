@@ -17,6 +17,8 @@ if [ "$_IP" ]; then
   printf "My IP address is %s\n" "$_IP"
 fi
 
+hwclock -s
+
 SETUP_LOGFILE=/boot/teslausb-headless-setup.log
 
 function setup_progress () {
