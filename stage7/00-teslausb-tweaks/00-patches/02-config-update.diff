@@ -4,7 +4,7 @@
  
  # Enable audio (loads snd_bcm2835)
  dtparam=audio=on
-+dtoverlay=dwc2,i2c-rtc,ds1339
- 
++dtoverlay=dwc2
++dtoverlay=i2c-rtc,ds1339
  [pi4]
  # Enable DRM VC4 V3D driver on top of the dispmanx display stack
