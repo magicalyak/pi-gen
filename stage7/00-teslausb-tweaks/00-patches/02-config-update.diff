@@ -8,7 +8,7 @@
 
  [pi4]
  # Enable DRM VC4 V3D driver on top of the dispmanx display stack
-@@ -63,3 +64,4 @@
+@@ -62,3 +63,4 @@
 
  [all]
  #dtoverlay=vc4-fkms-v3d
